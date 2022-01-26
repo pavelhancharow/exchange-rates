@@ -1,7 +1,7 @@
 # Exchange Rates API
 Реализовать приложение по опросу сервиса с данными курсов валют API, 
 
-которое предоставляет нужные данные: [https://freecurrencyapi.net/](https://freecurrencyapi.net/)
+которое предоставляет нужные данные: [Free Currency Conversion API](https://freecurrencyapi.net/)
 
 ## Техническое задание:
 
