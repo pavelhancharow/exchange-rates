@@ -14,7 +14,7 @@ export class App {
     this.table = new CurrencyTable();
     this.observer.subcribe(this.table.addTable);
 
-    this.rootElement.innerHTML = '<h1 class="title">Exchange Rates API</h1>';
+    this.rootElement.innerHTML = '<h1 class="title">Exchange Rates APP</h1>';
     this.rootElement.append(this.form.element);
 
     this.form.element.addEventListener('submit', this.observer.getSubcriber);

@@ -1,4 +1,4 @@
-# Exchange Rates API
+# Exchange Rates APP
 
 Реализовать приложение по опросу сервиса с данными курсов валют API,
 
