@@ -47,7 +47,7 @@ export class CurrencyForm extends BaseComponent {
     const resultForm = {
       from: this.inputDateFrom.element.value,
       to: this.inputDateTo.element.value,
-      currency: this.select.element.value,
+      currency: this.select.select.element.value,
     };
 
     this.response = await Controller.get(resultForm);

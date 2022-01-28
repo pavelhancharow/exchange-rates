@@ -8,7 +8,7 @@ export class App {
 
     this.observer = new Observer(this.rootElement);
 
-    this.form = new CurrencyForm(this.rootElement);
+    this.form = new CurrencyForm();
     this.observer.subcribe(this.form.sendForm);
 
     this.table = new CurrencyTable();
