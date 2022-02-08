@@ -1,0 +1,45 @@
+.form {
+  @include flex-column();
+
+  margin-bottom: 50px;
+
+  &-date {
+    @include space-between();
+
+    width: 200px;
+    margin-bottom: 20px;
+  }
+
+  &-select {
+    @include space-between();
+
+    margin-bottom: 30px;
+
+    &__options {
+      width: 33%;
+      height: 30px;
+      border: 1px solid $lightGrey;
+      border-radius: 4px;
+      outline: none;
+    }
+  }
+
+  &-currency {
+    @include flex();
+
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+
+    &__title {
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    &__value {
+      @include space-between();
+
+      width: 11%;
+      margin-right: 20px;
+    }
+  }
+}

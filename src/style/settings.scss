@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: $body;
+}
+
+input,
+label,
+select {
+  cursor: pointer;
+}
+
+#root {
+  @include flex-column();
+
+  padding: 35px 50px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.title {
+  margin-bottom: 30px;
+}
+
+input[type='date'],
+input[type='submit'] {
+  height: 2.5em;
+  padding: 0 0.625em;
+  margin: 0 0.625em;
+  font-family: 'Roboto', sans-serif;
+  border: 1px solid $lightGrey;
+  border-radius: 4px;
+  background-color: $light;
+  outline: 0;
+}
+
+table {
+  width: 100%;
+  border-top: 2px solid $body;
+  border-bottom: 2px solid $body;
+}
+
+td,
+th {
+  padding: 3px;
+}
+
+th {
+  text-align: left;
+  border-bottom: 1px solid $lightGrey;
+}
