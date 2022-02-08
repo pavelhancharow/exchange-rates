@@ -9,41 +9,51 @@ export class CurrencyTable extends BaseComponent {
     this.addTable = this.addTable.bind(this);
   }
 
-  addTable(rootElement, params) {
-    this.element.innerHTML = '';
-
-    const [response, checkedList] = params;
-
-    const tHead = new BaseComponent('tr');
-    tHead.element.innerHTML = '<th>DATE</th>';
+  // eslint-disable-next-line class-methods-use-this
+  addHead(checkedList, tHead = new BaseComponent('tr')) {
+    tHead.innerHTML('<th>DATE</th>');
 
     checkedList.forEach((item) => {
       const th = new BaseComponent('th');
-      th.element.textContent = item;
-      tHead.element.append(th.element);
+      th.innerHTML(item);
+      tHead.appendElements(th.element);
     });
 
-    this.element.append(tHead.element);
+    return tHead.element;
+  }
 
-    const dates = Object.keys(response);
-
-    dates.forEach((date) => {
+  addBody(params) {
+    Object.keys(params[0]).forEach((date) => {
       const tr = new BaseComponent('tr');
 
       const td = new BaseComponent('td');
-      td.element.textContent = date;
+      td.innerHTML(date);
 
-      tr.element.append(td.element);
+      tr.appendElements(td.element);
 
-      checkedList.forEach((item) => {
-        const tdNUMBER = new BaseComponent('td');
+      this.addRow(params, date, tr);
 
-        tdNUMBER.element.textContent = response[date][item];
-        tr.element.append(tdNUMBER.element);
-      });
-
-      this.element.append(tr.element);
+      super.appendElements(tr.element);
     });
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  addRow(params, date, tr) {
+    const [response, checkedList] = params;
+
+    checkedList.forEach((item) => {
+      const tdNUMBER = new BaseComponent('td');
+
+      tdNUMBER.innerHTML(response[date][item] || 1);
+      tr.appendElements(tdNUMBER.element);
+    });
+  }
+
+  addTable(rootElement, params) {
+    super.innerHTML('');
+
+    super.appendElements(this.addHead(params[1]));
+    this.addBody(params);
 
     rootElement.append(this.element);
   }
