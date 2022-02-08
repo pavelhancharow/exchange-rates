@@ -13,7 +13,8 @@
     "prettier/prettier": "error",
     "import/prefer-default-export": "off",
     "no-underscore-dangle": ["error", { "allowAfterThis": true }],
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"]
   },
   "ignorePatterns": ["*.config.js"]
 }
