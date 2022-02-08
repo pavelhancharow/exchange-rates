@@ -1,7 +1,7 @@
 import './style/index.scss';
 import { App } from './app/App';
 
-window.onload = () => {
+document.addEventListener('DOMContentLoaded', () => {
   try {
     const root = document.getElementById('root');
 
@@ -16,4 +16,4 @@ window.onload = () => {
     // eslint-disable-next-line no-console
     return console.error(error);
   }
-};
+});
