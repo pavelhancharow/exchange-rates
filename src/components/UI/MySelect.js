@@ -2,8 +2,8 @@ import { BaseComponent } from '../BaseComponent';
 import { MyOption } from './MyOption';
 
 export class MySelect extends BaseComponent {
-  constructor(options = ['EUR', 'USD'], ...classes) {
-    super('select', classes);
+  constructor(options = ['EUR', 'USD']) {
+    super('select', ['form-select__options']);
 
     this.options = options.map((option) => {
       const el =
@@ -11,6 +11,6 @@ export class MySelect extends BaseComponent {
       return el.element;
     });
 
-    this.element.append(...this.options);
+    super.appendElements(...this.options);
   }
 }
