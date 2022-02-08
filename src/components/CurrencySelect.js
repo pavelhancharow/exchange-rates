@@ -1,14 +1,16 @@
-import { currencyData } from '../data/currencyData';
+import { store } from '../data/store';
 import { BaseComponent } from './BaseComponent';
 import { MySelect } from './UI/MySelect';
 
-export class CurrencySelect extends BaseComponent {
-  constructor({ select = new MySelect(currencyData) } = {}) {
+class CurrencySelect extends BaseComponent {
+  constructor({ select = new MySelect(store.getCurrencyData()) } = {}) {
     super('div', ['form-select']);
 
     this.select = select;
 
-    super.innerHTML('<h2>Select Currency:</h2>');
-    super.appendElements(this.select.element);
+    this.innerHTML('<h2>Select Currency:</h2>');
+    this.appendElements(this.select.element);
   }
 }
+
+export const select = new CurrencySelect();

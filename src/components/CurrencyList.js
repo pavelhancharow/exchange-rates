@@ -1,10 +1,10 @@
-import { currencyData } from '../data/currencyData';
+import { store } from '../data/store';
 import { BaseComponent } from './BaseComponent';
 import { MyInput } from './UI/MyInput';
 import { MyLabel } from './UI/MyLabel';
 
-export class CurrencyList extends BaseComponent {
-  constructor(list = currencyData) {
+class CurrencyList extends BaseComponent {
+  constructor(list = store.getCurrencyData()) {
     super('div', ['form-currency']);
 
     this.list = this.initList(list);
@@ -12,10 +12,10 @@ export class CurrencyList extends BaseComponent {
   }
 
   initCurrencyList() {
-    super.innerHTML(
+    this.innerHTML(
       '<h3 class="form-currency__title">Choose result currencies:</h3>'
     );
-    super.appendElements(...this.list);
+    this.appendElements(...this.list);
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -45,3 +45,5 @@ export class CurrencyList extends BaseComponent {
     return array;
   }
 }
+
+export const currencies = new CurrencyList();

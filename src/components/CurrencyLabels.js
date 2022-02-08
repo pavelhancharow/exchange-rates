@@ -1,20 +1,22 @@
 import { MyInput } from './UI/MyInput';
 import { MyLabel } from './UI/MyLabel';
 
-export class CurrencyLabels {
+class CurrencyLabels {
   constructor({
     from = new MyLabel('from', 'с', 'form-date'),
-    dateFrom = new MyInput('date', 'from'),
+    inputFrom = new MyInput('date', 'from'),
     to = new MyLabel('to', 'по', 'form-date'),
-    dateTo = new MyInput('date', 'to'),
+    inputTo = new MyInput('date', 'to'),
   } = {}) {
     this.from = from;
-    this.dateFrom = dateFrom;
+    this.inputFrom = inputFrom.element;
 
     this.to = to;
-    this.dateTo = dateTo;
+    this.inputTo = inputTo.element;
 
-    this.from.element.append(this.dateFrom.element);
-    this.to.element.append(this.dateTo.element);
+    this.from.appendElements(this.inputFrom);
+    this.to.appendElements(this.inputTo);
   }
 }
+
+export const labels = new CurrencyLabels();

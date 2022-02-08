@@ -9,3 +9,5 @@ export class MyInput extends BaseComponent {
     this.element.setAttribute('value', value);
   }
 }
+
+export const submitBtn = new MyInput('submit', 'submit', 'Submit');

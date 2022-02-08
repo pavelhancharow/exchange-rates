@@ -1,7 +1,7 @@
 import { BaseComponent } from '../components/BaseComponent';
 import { CurrencyForm } from '../components/CurrencyForm';
 import { CurrencyTable } from '../components/CurrencyTable';
-import { Observer } from '../utils/observer';
+import { store } from '../data/store';
 
 export class App extends BaseComponent {
   constructor(
@@ -10,22 +10,15 @@ export class App extends BaseComponent {
   ) {
     super();
     this.element = root;
-
     this.form = form;
     this.table = table;
 
-    this.subscribe.call(this);
     this.initRoot.call(this);
   }
 
-  subscribe(observer = new Observer(this.element)) {
-    observer.subcribe([this.form.sendForm, this.table.addTable]);
-
-    this.form.element.addEventListener('submit', observer.getSubcriber);
-  }
-
   initRoot() {
-    super.innerHTML('<h1 class="title">Exchange Rates APP</h1>');
-    super.appendElements(this.form.element);
+    store.setRoot(this.element);
+    this.innerHTML('<h1 class="title">Exchange Rates APP</h1>');
+    this.appendElements(this.form.element);
   }
 }

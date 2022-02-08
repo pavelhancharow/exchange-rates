@@ -1,19 +1,29 @@
+import { store } from '../data/store';
+import { observer } from '../utils/observer';
 import { BaseComponent } from './BaseComponent';
 
 export class CurrencyTable extends BaseComponent {
   constructor() {
     super('table', ['table']);
-
-    this.element.cellspacing = 0;
-
+    this._data = [];
     this.addTable = this.addTable.bind(this);
+    observer.subscribe(this.addTable);
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  addHead(checkedList, tHead = new BaseComponent('tr')) {
+  addTable() {
+    this.innerHTML('');
+    this._data = store.getData();
+
+    this.appendElements(this.addHead());
+    this.addBody();
+
+    store.getRoot().append(this.element);
+  }
+
+  addHead(tHead = new BaseComponent('tr')) {
     tHead.innerHTML('<th>DATE</th>');
 
-    checkedList.forEach((item) => {
+    this._data[1].forEach((item) => {
       const th = new BaseComponent('th');
       th.innerHTML(item);
       tHead.appendElements(th.element);
@@ -22,39 +32,26 @@ export class CurrencyTable extends BaseComponent {
     return tHead.element;
   }
 
-  addBody(params) {
-    Object.keys(params[0]).forEach((date) => {
+  addBody() {
+    Object.keys(this._data[0]).forEach((date) => {
       const tr = new BaseComponent('tr');
-
       const td = new BaseComponent('td');
       td.innerHTML(date);
-
       tr.appendElements(td.element);
 
-      this.addRow(params, date, tr);
-
-      super.appendElements(tr.element);
+      this.addRow(date, tr);
+      this.appendElements(tr.element);
     });
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  addRow(params, date, tr) {
-    const [response, checkedList] = params;
+  addRow(date, tr) {
+    const [response, currencies] = this._data;
 
-    checkedList.forEach((item) => {
+    currencies.forEach((item) => {
       const tdNUMBER = new BaseComponent('td');
 
       tdNUMBER.innerHTML(response[date][item] || 1);
       tr.appendElements(tdNUMBER.element);
     });
-  }
-
-  addTable(rootElement, params) {
-    super.innerHTML('');
-
-    super.appendElements(this.addHead(params[1]));
-    this.addBody(params);
-
-    rootElement.append(this.element);
   }
 }
