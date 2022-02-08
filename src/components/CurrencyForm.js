@@ -1,4 +1,4 @@
-import { Controller } from '../controller/Controller';
+import { getCurrency } from '../services/getCurrency';
 import { currencyData } from '../data/currencyData';
 import { BaseComponent } from './BaseComponent';
 import { CurrencyList } from './CurrencyList';
@@ -50,7 +50,7 @@ export class CurrencyForm extends BaseComponent {
       currency: this.select.select.element.value,
     };
 
-    this.response = await Controller.get(resultForm);
+    this.response = await getCurrency(resultForm);
 
     return [this.response, this.checkedList];
   }
