@@ -18,6 +18,7 @@ export class App extends BaseComponent {
 
   initRoot() {
     store.setRoot(this.element);
+    store.setTableEl(this.table);
     this.innerHTML('<h1 class="title">Exchange Rates APP</h1>');
     this.appendElements(this.form.element);
   }

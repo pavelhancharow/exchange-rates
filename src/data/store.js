@@ -1,6 +1,7 @@
 class MyStore {
   constructor(currencyData = ['EUR', 'USD', 'RUB', 'BRL', 'GBP', 'JPY']) {
     this._rootElement = null;
+    this._tableElement = null;
     this._data = [];
     this._currencyData = currencyData;
 
@@ -8,6 +9,8 @@ class MyStore {
     this.getData = this.getData.bind(this);
     this.setRoot = this.setRoot.bind(this);
     this.getRoot = this.getRoot.bind(this);
+    this.setTableEl = this.setTableEl.bind(this);
+    this.getTableEl = this.getTableEl.bind(this);
     this.getCurrencyData = this.getCurrencyData.bind(this);
   }
 
@@ -29,6 +32,14 @@ class MyStore {
 
   getRoot() {
     return this._rootElement;
+  }
+
+  setTableEl(value) {
+    this._tableElement = value;
+  }
+
+  getTableEl() {
+    return this._tableElement;
   }
 }
 
